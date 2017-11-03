@@ -3,7 +3,7 @@
 # rolle @ irc.quakenet.org, rolle_ @ IRCnet
 
 # Updated when:
-set versijonummero "0.2.20170512"
+set versijonummero "0.2.20171103"
 #------------------------------------------------------------------------------------
 # Elä herran tähen mäne koskemaan tai taivas putoaa niskaas!
 # Paskaa koodia vuodesta 1988.
@@ -17,7 +17,7 @@ bind pub - !horoskooppi pub:horo
 
 proc pub:horo { nick uhost hand chan text } { 
 
-    set horoskooppiurl "http://www.iltalehti.fi/viihde/horoskooppi1_ho.shtml" 
+    set horoskooppiurl "http://www.iltalehti.fi/horoskooppi/index.shtml" 
     set horosivuhtml [::http::data [::http::geturl $horoskooppiurl]]
     set horohtmlsrc [dom parse -html $horosivuhtml]
     set horohtml [$horohtmlsrc documentElement]
@@ -26,7 +26,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "oinas"} { 
 
-            set oinashaku [$horohtml selectNodes {//*[@class="article-body"]/p[2]}]
+            set oinashaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[2]}]
             set oinas [$oinashaku asText]
             putserv "PRIVMSG $chan :$oinas"
 
@@ -34,7 +34,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "härkä"} { 
 
-            set harkahaku [$horohtml selectNodes {//*[@class="article-body"]/p[3]}]
+            set harkahaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[3]}]
             set harka [$harkahaku asText]
             putserv "PRIVMSG $chan :$harka"
 
@@ -42,7 +42,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "kaksoset"} { 
 
-            set kaksosethaku [$horohtml selectNodes {//*[@class="article-body"]/p[4]}]
+            set kaksosethaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[4]}]
             set kaksoset [$kaksosethaku asText]
             putserv "PRIVMSG $chan :$kaksoset"
 
@@ -50,7 +50,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "rapu"} { 
 
-            set rapuhaku [$horohtml selectNodes {//*[@class="article-body"]/p[5]}]
+            set rapuhaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[5]}]
             set rapu [$rapuhaku asText]
             putserv "PRIVMSG $chan :$rapu"
 
@@ -58,7 +58,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "leijona"} { 
 
-            set leijonahaku [$horohtml selectNodes {//*[@class="article-body"]/p[6]}]
+            set leijonahaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[6]}]
             set leijona [$leijonahaku asText]
             putserv "PRIVMSG $chan :$leijona"
 
@@ -66,7 +66,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "neitsyt"} { 
 
-            set neitsythaku [$horohtml selectNodes {//*[@class="article-body"]/p[7]}]
+            set neitsythaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[7]}]
             set neitsyt [$neitsythaku asText]
             putserv "PRIVMSG $chan :$neitsyt"
 
@@ -74,7 +74,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "vaaka"} { 
 
-            set vaakahaku [$horohtml selectNodes {//*[@class="article-body"]/p[8]}]
+            set vaakahaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[8]}]
             set vaaka [$vaakahaku asText]
             putserv "PRIVMSG $chan :$vaaka"
 
@@ -82,7 +82,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "skorpioni"} { 
 
-            set skorpionihaku [$horohtml selectNodes {//*[@class="article-body"]/p[9]}]
+            set skorpionihaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[9]}]
             set skorpioni [$skorpionihaku asText]
             putserv "PRIVMSG $chan :$skorpioni"
 
@@ -90,7 +90,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "jousimies"} { 
 
-            set jousimieshaku [$horohtml selectNodes {//*[@class="article-body"]/p[10]}]
+            set jousimieshaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[10]}]
             set jousimies [$jousimieshaku asText]
             putserv "PRIVMSG $chan :$jousimies"
 
@@ -98,7 +98,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "kauris"} { 
 
-            set kaurishaku [$horohtml selectNodes {//*[@class="article-body"]/p[11]}]
+            set kaurishaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[11]}]
             set kauris [$kaurishaku asText]
             putserv "PRIVMSG $chan :$kauris"
 
@@ -106,7 +106,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "vesimies"} { 
 
-            set vesimieshaku [$horohtml selectNodes {//*[@class="article-body"]/p[12]}]
+            set vesimieshaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[12]}]
             set vesimies [$vesimieshaku asText]
             putserv "PRIVMSG $chan :$vesimies"
 
@@ -114,7 +114,7 @@ proc pub:horo { nick uhost hand chan text } {
 
         if {[string trim $text] eq "kalat"} { 
 
-            set kalathaku [$horohtml selectNodes {//*[@class="article-body"]/p[13]}]
+            set kalathaku [$horohtml selectNodes {//*[@id="container_keski"]/div/div[3]/p[13]}]
             set kalat [$kalathaku asText]
             putserv "PRIVMSG $chan :$kalat"
 
